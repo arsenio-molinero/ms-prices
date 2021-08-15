@@ -1,5 +1,6 @@
 package com.mycomerce.msprices.infrastructure.api;
 
+import com.mycomerce.msprices.application.FindPriceUseCase;
 import com.mycomerce.msprices.application.PriceDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,8 +14,22 @@ import java.time.LocalDateTime;
 @RestController
 @RequestMapping("/price")
 public class PriceControllerAdapter {
+
+    private final FindPriceUseCase findPriceUseCase;
+
+    public PriceControllerAdapter(FindPriceUseCase findPriceUseCase) {
+        this.findPriceUseCase = findPriceUseCase;
+    }
+
     @GetMapping(params={"brand", "product", "date"})
     public PriceDto getPrice(@RequestParam int brand, @RequestParam int product, @RequestParam String date) {
-        throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        PriceDto priceDto = null;
+        try {
+            priceDto = findPriceUseCase.getPrice(brand, product, LocalDateTime.parse(date));
+        } catch(Exception e){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+        if (priceDto == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        return priceDto;
     }
 }
