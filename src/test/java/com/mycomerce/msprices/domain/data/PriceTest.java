@@ -15,5 +15,13 @@ class PriceTest {
         Price price = new Price(id, 1, null, null, 1,
                 1,1,0.0,"EUR");
         assertEquals(id,price.getId());
+        assertEquals(1,price.getBrandId());
+        assertNull(price.getStartDate());
+        assertNull(price.getEndDate());
+        assertEquals(1,price.getPriceList());
+        assertEquals(1,price.getProductId());
+        assertEquals(1,price.getPriority());
+        assertEquals(0.0,price.getPrice());
+        assertEquals("EUR",price.getCurr());
     }
 }
