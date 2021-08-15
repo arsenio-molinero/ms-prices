@@ -29,7 +29,7 @@ class FindPriceTest {
     }
 
     @Test
-    public void price_not_found(){
+    public void priceNotFound(){
         ArrayList<Price> datosARetornar = new ArrayList();
 
         PriceRepositoryPort repository = mock(PriceRepositoryPort.class);
