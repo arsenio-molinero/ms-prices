@@ -37,7 +37,7 @@ class FindPriceUseCaseImplTest {
                 LocalDateTime.parse("2020-06-14T10:00:00"))).thenReturn(dataToReturn);
 
         PriceDto priceDto = new FindPriceUseCaseImpl(priceRepositoryAdapter)
-                .getPrice(1, 1, LocalDateTime.parse("2020-06-14T10:00:00"));
+                .execute( new FindPriceArgs(1, 1, LocalDateTime.parse("2020-06-14T10:00:00")));
 
         assertNotNull(priceDto);
         assertEquals(1, priceDto.getPriceList());
@@ -47,7 +47,7 @@ class FindPriceUseCaseImplTest {
     public void controlOfErroneousParamBrandId(){
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             PriceDto priceDto = new FindPriceUseCaseImpl(null)
-                    .getPrice(0, 1, LocalDateTime.parse("2020-06-14T10:00:00"));
+                    .execute( new FindPriceArgs(0, 1, LocalDateTime.parse("2020-06-14T10:00:00")));
         });
     }
 
@@ -55,7 +55,7 @@ class FindPriceUseCaseImplTest {
     public void controlOfErroneousParamProductId(){
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             PriceDto priceDto = new FindPriceUseCaseImpl(null)
-                    .getPrice(1, 0, LocalDateTime.parse("2020-06-14T10:00:00"));
+                    .execute( new FindPriceArgs(1, 0, LocalDateTime.parse("2020-06-14T10:00:00")));
         });
     }
 
@@ -63,7 +63,7 @@ class FindPriceUseCaseImplTest {
     public void controlOfErroneousParamDateTime(){
         Assertions.assertThrows(DateTimeParseException.class, () -> {
             PriceDto priceDto = new FindPriceUseCaseImpl(null)
-                    .getPrice(1, 1, LocalDateTime.parse("2020-02-30 10:00:00"));
+                    .execute( new FindPriceArgs(1, 1, LocalDateTime.parse("2020-02-30 10:00:00")));
         });
     }
 
@@ -71,7 +71,7 @@ class FindPriceUseCaseImplTest {
     public void controlOfErroneousParamDateTimeNull(){
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             PriceDto priceDto = new FindPriceUseCaseImpl(null)
-                    .getPrice(1, 1, null);
+                    .execute( new FindPriceArgs(1, 1, null));
         });
     }
 }

@@ -5,8 +5,6 @@ import com.mycomerce.msprices.infrastructure.spi.persistence.PriceRepositoryAdap
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
-
 @Service
 public class FindPriceUseCaseImpl implements FindPriceUseCase {
     @Autowired
@@ -16,12 +14,14 @@ public class FindPriceUseCaseImpl implements FindPriceUseCase {
         this.priceRepositoryAdapter = priceRepositoryAdapter;
     }
 
+
     @Override
-    public PriceDto getPrice(int brandId, long productId, LocalDateTime dateTime) throws IllegalArgumentException {
-        if(brandId < 1 || productId < 1 || dateTime == null)
+    public PriceDto execute(FindPriceArgs findPriceArgs) throws IllegalArgumentException {
+        if(findPriceArgs.getBrandId() < 1 || findPriceArgs.getProductId() < 1 || findPriceArgs.getDateTime() == null)
             throw new IllegalArgumentException();
 
-        return new FindPrice(priceRepositoryAdapter).getPrice(brandId, productId, dateTime)
+        return new FindPrice(priceRepositoryAdapter).getPrice(
+                findPriceArgs.getBrandId(), findPriceArgs.getProductId(), findPriceArgs.getDateTime())
                 .map(PriceDto::toDto).orElse(null);
     }
 }

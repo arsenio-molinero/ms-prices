@@ -1,5 +1,6 @@
 package com.mycomerce.msprices.infrastructure.api;
 
+import com.mycomerce.msprices.application.FindPriceArgs;
 import com.mycomerce.msprices.application.FindPriceUseCase;
 import com.mycomerce.msprices.application.PriceDto;
 import org.springframework.http.HttpStatus;
@@ -25,7 +26,9 @@ public class PriceControllerAdapter {
     public PriceDto getPrice(@RequestParam int brand, @RequestParam int product, @RequestParam String date) {
         PriceDto priceDto = null;
         try {
-            priceDto = findPriceUseCase.getPrice(brand, product, LocalDateTime.parse(date));
+            priceDto = (PriceDto) findPriceUseCase.execute( new FindPriceArgs(brand, product, LocalDateTime.parse(date)));
+
+            priceDto = (PriceDto) findPriceUseCase.execute( new FindPriceArgs(brand, product, LocalDateTime.parse(date)));
         } catch(Exception e){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
