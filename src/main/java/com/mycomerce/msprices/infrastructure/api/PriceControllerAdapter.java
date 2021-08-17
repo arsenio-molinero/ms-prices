@@ -27,8 +27,6 @@ public class PriceControllerAdapter {
         PriceDto priceDto = null;
         try {
             priceDto = (PriceDto) findPriceUseCase.execute( new FindPriceArgs(brand, product, LocalDateTime.parse(date)));
-
-            priceDto = (PriceDto) findPriceUseCase.execute( new FindPriceArgs(brand, product, LocalDateTime.parse(date)));
         } catch(Exception e){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
