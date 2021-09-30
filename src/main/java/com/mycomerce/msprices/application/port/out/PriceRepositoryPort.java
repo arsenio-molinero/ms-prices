@@ -1,6 +1,6 @@
-package com.mycomerce.msprices.domain.spi;
+package com.mycomerce.msprices.application.port.out;
 
-import com.mycomerce.msprices.domain.data.Price;
+import com.mycomerce.msprices.domain.Price;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;

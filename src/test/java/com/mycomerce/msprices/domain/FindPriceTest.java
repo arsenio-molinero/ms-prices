@@ -1,7 +1,6 @@
 package com.mycomerce.msprices.domain;
 
-import com.mycomerce.msprices.domain.data.Price;
-import com.mycomerce.msprices.domain.spi.PriceRepositoryPort;
+import com.mycomerce.msprices.application.port.out.PriceRepositoryPort;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.mockito.Mockito;

@@ -1,6 +1,6 @@
-package com.mycomerce.msprices.infrastructure.api;
+package com.mycomerce.msprices.infrastructure.in;
 
-import com.mycomerce.msprices.application.PriceDto;
+import com.mycomerce.msprices.application.port.in.DTO.PriceDTO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -33,9 +33,9 @@ class PriceControllerAdapterTest {
 
     @Test
     public void getPrice(){
-        PriceDto priceDto = restTemplate.getForObject(
+        PriceDTO priceDto = restTemplate.getForObject(
                 String.format("http://localhost:%s/price?brand=1&product=35455&date=2020-06-15T21:00:00", port),
-                PriceDto.class);
+                PriceDTO.class);
 
         assertNotNull(priceDto);
         assertEquals(4, priceDto.getPriceList());

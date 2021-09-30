@@ -1,10 +1,10 @@
-package com.mycomerce.msprices.infrastructure.spi.persistence.mapper;
+package com.mycomerce.msprices.infrastructure.out.persistence.mapper;
 
-import com.mycomerce.msprices.domain.data.Price;
-import com.mycomerce.msprices.infrastructure.spi.persistence.data.PriceDbo;
+import com.mycomerce.msprices.domain.Price;
+import com.mycomerce.msprices.infrastructure.out.persistence.data.PriceDBO;
 
 public abstract class PriceMapper {
-    public static Price toPrice(PriceDbo priceDbo){
+    public static Price toPrice(PriceDBO priceDbo){
         return new Price(priceDbo.getId(),
                 priceDbo.getBrandId(),
                 priceDbo.getStartDate(),

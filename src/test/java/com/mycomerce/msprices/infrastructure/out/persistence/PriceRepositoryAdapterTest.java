@@ -1,7 +1,7 @@
-package com.mycomerce.msprices.infrastructure.spi.persistence;
+package com.mycomerce.msprices.infrastructure.out.persistence;
 
 import com.mycomerce.msprices.MsPricesApplication;
-import com.mycomerce.msprices.domain.data.Price;
+import com.mycomerce.msprices.domain.Price;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,4 +1,4 @@
-package com.mycomerce.msprices.infrastructure.spi.persistence.data;
+package com.mycomerce.msprices.infrastructure.out.persistence.data;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,7 +14,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @Entity
 @Table(name = "PRICES")
-public class PriceDbo {
+public class PriceDBO {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(

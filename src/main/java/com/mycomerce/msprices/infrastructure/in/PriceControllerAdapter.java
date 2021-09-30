@@ -1,8 +1,8 @@
-package com.mycomerce.msprices.infrastructure.api;
+package com.mycomerce.msprices.infrastructure.in;
 
-import com.mycomerce.msprices.application.FindPriceArgs;
-import com.mycomerce.msprices.application.FindPriceUseCase;
-import com.mycomerce.msprices.application.PriceDto;
+import com.mycomerce.msprices.application.port.in.FindPriceArgs;
+import com.mycomerce.msprices.application.port.in.FindPriceUseCase;
+import com.mycomerce.msprices.application.port.in.DTO.PriceDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,10 +23,10 @@ public class PriceControllerAdapter {
     }
 
     @GetMapping(params={"brand", "product", "date"})
-    public PriceDto getPrice(@RequestParam int brand, @RequestParam int product, @RequestParam String date) {
-        PriceDto priceDto = null;
+    public PriceDTO getPrice(@RequestParam int brand, @RequestParam int product, @RequestParam String date) {
+        PriceDTO priceDto = null;
         try {
-            priceDto = (PriceDto) findPriceUseCase.execute( new FindPriceArgs(brand, product, LocalDateTime.parse(date)));
+            priceDto = (PriceDTO) findPriceUseCase.execute( new FindPriceArgs(brand, product, LocalDateTime.parse(date)));
         } catch(Exception e){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }

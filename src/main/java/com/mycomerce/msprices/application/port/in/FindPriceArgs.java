@@ -1,4 +1,4 @@
-package com.mycomerce.msprices.application;
+package com.mycomerce.msprices.application.port.in;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

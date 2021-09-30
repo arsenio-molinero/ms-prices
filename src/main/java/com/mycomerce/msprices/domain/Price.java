@@ -1,4 +1,4 @@
-package com.mycomerce.msprices.domain.data;
+package com.mycomerce.msprices.domain;
 
 import lombok.Data;
 

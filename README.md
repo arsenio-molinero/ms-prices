@@ -54,6 +54,7 @@ Para poder poner en marcha el microservicio tenemos que ejecutar el siguiente co
 
 Una vez que arranca el servicio y no se produce ningún error, estará el endpoint disponible en el puerto 8080 del localhost.
 
+Se puede probar con la siguiente url [http://localhost:8080/price?brand=1&product=35455&date=2020-06-14T16:00:00](http://localhost:8080/price?brand=1&product=35455&date=2020-06-14T16:00:00)
 ## Ejecución de los test uitarios y de integración ⚙️
 
 la ejecución se realiza mediante la herramienta _Apache Maven_. Se tiene que ejecutar el siguiente comando en el directorio raiz del proyecto.

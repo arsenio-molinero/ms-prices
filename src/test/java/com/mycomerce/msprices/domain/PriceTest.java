@@ -1,5 +1,6 @@
-package com.mycomerce.msprices.domain.data;
+package com.mycomerce.msprices.domain;
 
+import com.mycomerce.msprices.domain.Price;
 import org.junit.jupiter.api.Test;
 
 import java.util.UUID;
